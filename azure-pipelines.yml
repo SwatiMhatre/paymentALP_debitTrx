@@ -20,3 +20,37 @@ steps:
     publishJUnitResults: false
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+
+- task: Docker@0 # task for building image
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerRegistryEndpoint: 'docker-alp-grp12'
+    action: 'Build an image'
+    dockerFile: './Dockerfile'
+    imageName: '457398/$(Build.Repository.Name):$(Build.SourceVersion)'
+    includeLatestTag: true
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
+    buildArguments: 'JAR_FILE=target/UserApp-0.0.1-SNAPSHOT.jar'
+ 
+- task: Docker@0
+  displayName: 'Push image'
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerRegistryEndpoint: 'docker-alp-grp12'
+    action: 'Push an image'
+    imageName: '457398/$(Build.Repository.Name):$(Build.SourceVersion)'
+    includeLatestTag: true
+    includeSourceTags: true
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)'
+    contents: '**/k8s/**'
+    TargetFolder: '$(Build.StagingDirectory)'
+ 
+  # Publish build artifacts to Azure Pipelines/TFS or a file share
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.StagingDirectory)/k8s'
+    artifactName: 'k8s'
