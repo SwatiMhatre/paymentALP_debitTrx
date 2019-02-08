@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: debitTrx
+  labels:
+    app: debitTrx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: debitTrx
+  template:
+    metadata:
+      labels:
+        app: debitTrx
+    spec:
+      containers:
+      - name: debitTrx
+        image: "457398/docker-alp-grp12:latest"
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8081
+      imagePullSecrets:
+      - name: d-acr-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: debitTrx
+  #annotations:
+    #service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 8081
+      name: http
+  selector:
+    app: user-service
