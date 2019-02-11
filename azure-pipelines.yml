@@ -20,6 +20,7 @@ steps:
     publishJUnitResults: false
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+    options: '-Dbuildnumber=$(Build.SourceVersion)'
 
 - task: Docker@0 # task for building image
   inputs:
@@ -30,6 +31,7 @@ steps:
     imageName: '457398/$(Build.Repository.Name):$(Build.SourceVersion)'
     includeLatestTag: true
     workingDirectory: '$(System.DefaultWorkingDirectory)'
+    buildArguments: 'JAR_FILE=target/payment-microservice-debitac-0.0.1-SNAPSHOT'
  
 - task: Docker@0
   displayName: 'Push image'
