@@ -28,7 +28,7 @@ steps:
     dockerRegistryEndpoint: 'docker-alp-grp12'
     action: 'Build an image'
     dockerFile: './Dockerfile'
-    imageName: '457398/$(Build.Repository.Name):$(Build.SourceVersion)'
+    imageName: '457398/payment-alp-debit-trx:$(Build.SourceVersion)'
     includeLatestTag: true
     workingDirectory: '$(System.DefaultWorkingDirectory)'
     buildArguments: 'JAR_FILE=target/payment-microservice-debitac-0.0.1-SNAPSHOT.jar'
@@ -39,7 +39,7 @@ steps:
     containerregistrytype: 'Container Registry'
     dockerRegistryEndpoint: 'docker-alp-grp12'
     action: 'Push an image'
-    imageName: '457398/$(Build.Repository.Name):$(Build.SourceVersion)'
+    imageName: '457398/payment-alp-debit-trx:$(Build.SourceVersion)'
     includeLatestTag: true
     includeSourceTags: true
 
