@@ -31,7 +31,7 @@ steps:
     imageName: '457398/$(Build.Repository.Name):$(Build.SourceVersion)'
     includeLatestTag: true
     workingDirectory: '$(System.DefaultWorkingDirectory)'
-    buildArguments: 'JAR_FILE=target/payment-microservice-debitac-0.0.1-SNAPSHOT'
+    buildArguments: 'JAR_FILE=target/payment-microservice-debitac-0.0.1-SNAPSHOT.jar'
  
 - task: Docker@0
   displayName: 'Push image'
