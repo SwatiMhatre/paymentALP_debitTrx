@@ -9,9 +9,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class PaymentMicroserviceDebitacApplicationTests {
 
-	/*@Test
+	@Test
 	public void contextLoads() {
-	}*/
+	}
 
 }
 
