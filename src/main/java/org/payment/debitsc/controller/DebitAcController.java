@@ -32,5 +32,12 @@ public class DebitAcController {
 		System.out.println("getAll called from debit account controller");
 		return repository.findAll();
 	}
+	
+	@CrossOrigin
+	@GetMapping(value="/test")
+	public String test(){
+		System.out.println("test callye");
+		return "test called!!";
+	}
 
 }
