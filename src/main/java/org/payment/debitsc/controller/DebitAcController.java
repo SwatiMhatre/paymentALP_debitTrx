@@ -29,6 +29,7 @@ public class DebitAcController {
 	@CrossOrigin
 	@GetMapping(value="/getAll")
 	public List<DebitAccount> getAll(){
+		System.out.println("getAll called from debit account controller");
 		return repository.findAll();
 	}
 
