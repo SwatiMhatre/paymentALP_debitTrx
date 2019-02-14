@@ -12,28 +12,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@ControllerAdvice
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping(value="/debitac")
 public class DebitAcController {
 	@Autowired
 	DebitAccountRepository repository;
 	//DebitAccountDaoService debitAccountDaoService;
 	
-	@CrossOrigin
-	@GetMapping(value="/ac/{id}")
-	public DebitAccount getData(@PathVariable Integer id){
-		return repository.getDebitAcById(id);
-	}
-	
-	@CrossOrigin
 	@GetMapping(value="/getAll")
 	public List<DebitAccount> getAll(){
 		System.out.println("getAll called from debit account controller");
 		return repository.findAll();
 	}
 	
-	@CrossOrigin
+	@GetMapping(value="/ac/{id}")
+	public DebitAccount getData(@PathVariable Integer id){
+		return repository.getDebitAcById(id);
+	}
+	
 	@GetMapping(value="/test")
 	public String test(){
 		System.out.println("test callye");
