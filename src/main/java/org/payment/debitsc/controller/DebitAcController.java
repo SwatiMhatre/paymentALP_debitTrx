@@ -20,18 +20,18 @@ public class DebitAcController {
 	DebitAccountRepository repository;
 	//DebitAccountDaoService debitAccountDaoService;
 	
-	@GetMapping(value="/getAll")
+	@GetMapping(value="/debitac/getAll")
 	public List<DebitAccount> getAll(){
 		System.out.println("getAll called from debit account controller");
 		return repository.findAll();
 	}
 	
-	@GetMapping(value="/ac/{id}")
+	@GetMapping(value="/debitac/ac/{id}")
 	public DebitAccount getData(@PathVariable Integer id){
 		return repository.getDebitAcById(id);
 	}
 	
-	@GetMapping(value="/test/test1")
+	@GetMapping(value="/debitac/test")
 	public String test(){
 		System.out.println("test callye");
 		return "test called!!";
