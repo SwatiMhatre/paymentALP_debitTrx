@@ -15,18 +15,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(value="/creditac")
 public class CreditAcController {
 	@Autowired
 	CreditAccountRepository repository;
 	
-	@GetMapping(value="/ac/{id}")
+	@GetMapping(value="/creditac/ac/{id}")
 	public CreditAccount getData(@PathVariable Integer id){
 
 		return repository.getCreditAcById(id);
 	}
 	
-	@GetMapping(value="/getAll")
+	@GetMapping(value="/creditac/getAll")
 	public List<CreditAccount> getAll(){
 		return repository.findAll();
 	}
