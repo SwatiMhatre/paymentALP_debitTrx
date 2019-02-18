@@ -31,7 +31,7 @@ public class DebitAcController {
 		return repository.getDebitAcById(id);
 	}
 	
-	@GetMapping(value="/test")
+	@GetMapping(value="/test/test1")
 	public String test(){
 		System.out.println("test callye");
 		return "test called!!";
