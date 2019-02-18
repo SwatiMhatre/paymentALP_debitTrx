@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(value="/debitac")
 public class DebitAcController {
 	@Autowired
 	DebitAccountRepository repository;
