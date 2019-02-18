@@ -19,7 +19,7 @@ spec:
         image: "457398/payment-alp-debit-trx:latest"
         imagePullPolicy: Always
         ports:
-        - containerPort: 8081
+        - containerPort: 80
       imagePullSecrets:
       - name: d-acr-secret
 ---
@@ -34,7 +34,7 @@ spec:
   ports:
     - port: 80
       protocol: TCP
-      targetPort: 8081
+      targetPort: 80
       name: http
   selector:
     app: debit-trx
